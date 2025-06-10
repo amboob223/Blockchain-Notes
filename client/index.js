@@ -1,33 +1,42 @@
-
-
-document.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener("DOMContentLoaded", () => {
     let text = document.getElementById("note");
-let button = document.querySelector(".mint")
-let result = document.getElementById("result")
+    let button = document.querySelector(".mint");
+    let result = document.getElementById("result");
+    let genbutton = document.getElementById("gen");
+    let topic = document.querySelector(".topic");
 
-let array = ["how to build a site","how to send a phishing email","how use wireshark","how to use metasploit","how to use meterperer","how to use solidity"]
+    let array = [];
 
+    button.addEventListener("click", () => {
+        const input = text.value.trim();
 
-    button.addEventListener("click",()=>{
-        array.push(text.value)
-        console.log(array)
-    })
+        if (!input) {
+            console.log("Input is empty");
+            result.innerHTML = "Please type something first";
+            return;
+        }
 
+        if (array.includes(input)) {
+            console.log("NO Duplicates");
+            result.innerHTML = "No duplicates";
+            return;
+        }
 
-    const genbutton = document.getElementById("gen")
-    const topic = document.querySelector(".topic")
+        array.push(input);
+        console.log(array);
 
-        genbutton.addEventListener("click",()=>{
-            let random = Math.random()
-            let index = Math.floor(random * array.length)
-                topic.innerHTML = array[index]
-                console.log(topic.innerHTML)
-        })
+        text.value = "";
+        result.innerHTML = "Note added!";
+    });
 
+    genbutton.addEventListener("click", () => {
+        if (array.length === 0) {
+            topic.innerHTML = "No topics yet!";
+            return;
+        }
 
-
-
-})
-
-//so to fix we added queryselectorenot get element by class as that give us a list and when we did query selector we added a .
-//so innertext is good for getting the elenmnt but use .value to get the actual value 
+        let index = Math.floor(Math.random() * array.length);
+        topic.innerHTML = array[index];
+        console.log(topic.innerHTML);
+    });
+});
