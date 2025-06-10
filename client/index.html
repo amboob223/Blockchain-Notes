@@ -5,21 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BlockChain Notes</title>
     <link rel="stylesheet" href="index.css">
-    <script src="index.js"></script>
+    
 </head>
 <body>
     <div class="outer">
         <div class="inner">
             <h1>Leave a note</h1>
-            <input type="text">
+            <input type="text" id="note">
            
-        </div> <button class="note">mint</button>
+        </div> <button class="mint">mint</button>
        
            
-                <p class="result">this will be the result</p>
+                <p id="result">this will be the result</p>
             
        
     </div>
+<div class="outer">
+    <div class="inner">
+        <h1>generate a topic </h1>
+        <button id="gen">generate</button>
+        <p class="topic"></p>
+    </div>
+</div>
 
+<script src="index.js"></script>
 </body>
 </html>
